@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node ./index.js",
-    "swagger-autogen": "node ./swagger.js",
+    "swagger-autogen": "node ./src/swagger.js",
     "startup": "nodemon ./src/index.js",
     "fix-policy": "Set-ExecutionPolicy RemoteSigned -Scope CurrentUser",
     "lint": "eslint --fix ./**/*.js",
