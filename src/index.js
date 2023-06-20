@@ -11,6 +11,7 @@ const authcontroller = require("./authController");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//von stackoverflow kopiert und angepasst
 app.use(
   session({
     secret: "secretM295",
@@ -39,11 +40,11 @@ app.post("/tasks", (req, res) => {
 });
 
 app.get("/tasks/:taskid", (req, res) => {
-  taskcontroller.getTask(req, res)
+  taskcontroller.getTask(req, res);
 });
 
 app.put("/tasks/:taskid", (req, res) => {
-  taskcontroller.updateTask(req, res)
+  taskcontroller.updateTask(req, res);
 });
 
 app.delete("/tasks/:taskid", (req, res) => {

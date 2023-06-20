@@ -1,8 +1,8 @@
 exports.login =
   ("/login",
   (req, res) => {
-    const email = req.body.email
-    const password = req.body.password
+    const email = req.body.email;
+    const password = req.body.password;
     //von stackoverflow kopiert
     const checkEmail = email
       .toLowerCase()

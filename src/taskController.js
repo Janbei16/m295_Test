@@ -1,12 +1,12 @@
 function checkLogin(req, res) {
   if (!req.session.user) {
-    res.status(403).json({ message: "Nicht eingeloggt" })
-    return false
+    res.status(403).json({ message: "Nicht eingeloggt" });
+    return false;
   }
 
-  return true
+  return true;
 }
-
+// Erstellt von ChatGPT
 const tasks = [
   {
     id: 1,
@@ -36,77 +36,76 @@ const tasks = [
     done: true,
     due: "2023-06-20",
   },
-]
+];
 
 exports.getTasks = (req, res) => {
   if (checkLogin(req, res)) {
-    res.status(200).json(tasks)
+    res.status(200).json(tasks);
   }
-}
+};
 
 exports.postTasks = (req, res) => {
   if (checkLogin(req, res)) {
-    const task = req.body
+    const task = req.body;
 
     //Aus altem Projekt kopiert und angepasst
-    const id = Math.max(...tasks.map((task) => task.id)) + 1
-
+    const id = Math.max(...tasks.map((task) => task.id)) + 1;
     const newTask = {
       id: id,
       title: task.title,
       description: task.description,
       done: task.done,
       due: task.due,
-    }
-    tasks.push(newTask)
-    res.status(201).json(newTask)
+    };
+    tasks.push(newTask);
+    res.status(201).json(newTask);
   }
-}
+};
 
 exports.getTask = (req, res) => {
   if (checkLogin(req, res)) {
-    const taskid = req.params.taskid
+    const taskid = req.params.taskid;
 
-    const task = tasks.find((task) => task.id == taskid)
+    const task = tasks.find((task) => task.id == taskid);
     if (task) {
-      res.json(task)
+      res.json(task);
     } else {
-      res.sendStatus(404)
+      res.sendStatus(404);
     }
   }
-}
+};
 
 exports.updateTask = (req, res) => {
   if (checkLogin(req, res)) {
-    const taskid = req.params.taskid
-    const task = req.body
+    const taskid = req.params.taskid;
+    const task = req.body;
 
-    const taskUpdate = tasks.find((task) => task.id == taskid)
+    const taskUpdate = tasks.find((task) => task.id == taskid);
     if (taskUpdate) {
-      taskUpdate.title = task.title
-      taskUpdate.description = task.description
-      taskUpdate.done = task.done
-      taskUpdate.due = task.due
-      res.status(200).json(taskUpdate)
+      taskUpdate.title = task.title;
+      taskUpdate.description = task.description;
+      taskUpdate.done = task.done;
+      taskUpdate.due = task.due;
+      res.status(200).json(taskUpdate);
     } else {
-      res.sendStatus(404)
+      res.sendStatus(404);
     }
   }
-}
+};
 
 exports.deleteTask = (req, res) => {
   if (checkLogin(req, res)) {
-    const taskid = req.params.taskid
+    const taskid = req.params.taskid;
 
-    const taskDelete = tasks.find((task) => task.id == taskid)
+    const taskDelete = tasks.find((task) => task.id == taskid);
 
     if (taskDelete) {
-      const index = tasks.indexOf(taskDelete)
+      const index = tasks.indexOf(taskDelete);
 
-      tasks.splice(index, 1)
-      res.status(200).json(taskDelete)
+      tasks.splice(index, 1);
+      res.status(200).json(taskDelete);
     } else {
-      res.sendStatus(404)
+      res.sendStatus(404);
     }
   }
-}
+};
