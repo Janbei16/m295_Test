@@ -20,7 +20,7 @@ exports.login =
 
 exports.verify = (req, res) => {
   if (req.session.user) {
-    res.status(200).json(request.session.user);
+    res.status(200).json(req.session.user);
   } else {
     res.sendStatus(401);
   }
