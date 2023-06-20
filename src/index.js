@@ -40,16 +40,16 @@ app.post("/tasks", (req, res) => {
 });
 
 app.get("/tasks/:taskId", (req, res) => {
-  taskcontroller.getTask(req, res)
-})
+  taskcontroller.getTask(req, res);
+});
 
 app.put("/tasks/:taskId", (req, res) => {
-  taskcontroller.updateTask(req, res)
-})
+  taskcontroller.updateTask(req, res);
+});
 
 app.delete("/tasks/:taskId", (req, res) => {
-  taskcontroller.deleteTask(req, res)
-})
+  taskcontroller.deleteTask(req, res);
+});
 
 app.post("/login", (req, res) => {
   authcontroller.login(req, res);
