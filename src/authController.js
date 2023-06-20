@@ -8,20 +8,20 @@ exports.login =
     //von stackoverflow kopiert
     if (!email || !password) {
       res.status(401).send("Email oder Passwort fehlen");
-    }else{
-    const checkEmail = email
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-
-    if (checkEmail && password === "m295") {
-      req.session.user = { email: email, password: password };
-      res.status(200).send("Login erfolgreich");
     } else {
-      res.status(401).send("Login fehlgeschlagen");
+      const checkEmail = email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+
+      if (checkEmail && password === "m295") {
+        req.session.user = { email: email, password: password };
+        res.status(200).send("Login erfolgreich");
+      } else {
+        res.status(401).send("Login fehlgeschlagen");
+      }
     }
-  }
   });
 
 exports.verify = (req, res) => {

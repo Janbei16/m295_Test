@@ -52,6 +52,9 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "406": {
+            "description": "Not Acceptable"
           }
         }
       }

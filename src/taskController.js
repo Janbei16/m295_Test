@@ -57,8 +57,13 @@ exports.postTasks = (req, res) => {
       done: task.done,
       due: task.due,
     };
-    tasks.push(newTask);
-    res.status(201).json(newTask);
+
+    if (!newTask.title || !newTask.description || !newTask.due) {
+      res.status(406).json({ message: "Bitte alle Felder ausfüllen" });
+    } else {
+      tasks.push(newTask);
+      res.status(201).json(newTask);
+    }
   }
 };
 
@@ -68,7 +73,7 @@ exports.getTask = (req, res) => {
 
     const task = tasks.find((task) => task.id == taskId);
     if (task) {
-      res.json(task);
+      res.status(200).json(task);
     } else {
       res.sendStatus(404);
     }
@@ -80,13 +85,17 @@ exports.updateTask = (req, res) => {
     const taskId = req.params.taskId;
     const task = req.body;
 
-    const taskUpdate = tasks.find((task) => task.id == taskId);
-    if (taskUpdate) {
-      taskUpdate.title = task.title;
-      taskUpdate.description = task.description;
-      taskUpdate.done = task.done;
-      taskUpdate.due = task.due;
-      res.status(200).json(taskUpdate);
+    if (taskId) {
+      const taskUpdate = tasks.find((task) => task.id == taskId);
+      if (taskUpdate) {
+        taskUpdate.title = task.title;
+        taskUpdate.description = task.description;
+        taskUpdate.done = task.done;
+        taskUpdate.due = task.due;
+        res.status(200).json(taskUpdate);
+      } else {
+        res.sendStatus(404);
+      }
     } else {
       res.sendStatus(404);
     }
