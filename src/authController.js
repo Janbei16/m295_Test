@@ -1,9 +1,14 @@
+const e = require("express");
+
 exports.login =
   ("/login",
   (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     //von stackoverflow kopiert
+    if (!email || !password) {
+      res.status(401).send("Email oder Passwort fehlen");
+    }else{
     const checkEmail = email
       .toLowerCase()
       .match(
@@ -16,6 +21,7 @@ exports.login =
     } else {
       res.status(401).send("Login fehlgeschlagen");
     }
+  }
   });
 
 exports.verify = (req, res) => {
