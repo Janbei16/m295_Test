@@ -11,7 +11,7 @@ const authcontroller = require("./authController");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//von stackoverflow kopiert und angepasst
+//von stackoverflow kopiert und angepassst
 app.use(
   session({
     secret: "secretM295",
@@ -39,17 +39,17 @@ app.post("/tasks", (req, res) => {
   taskcontroller.postTasks(req, res);
 });
 
-app.get("/tasks/:taskid", (req, res) => {
-  taskcontroller.getTask(req, res);
-});
+app.get("/tasks/:taskId", (req, res) => {
+  taskcontroller.getTask(req, res)
+})
 
-app.put("/tasks/:taskid", (req, res) => {
-  taskcontroller.updateTask(req, res);
-});
+app.put("/tasks/:taskId", (req, res) => {
+  taskcontroller.updateTask(req, res)
+})
 
-app.delete("/tasks/:taskid", (req, res) => {
-  taskcontroller.deleteTask(req, res);
-});
+app.delete("/tasks/:taskId", (req, res) => {
+  taskcontroller.deleteTask(req, res)
+})
 
 app.post("/login", (req, res) => {
   authcontroller.login(req, res);

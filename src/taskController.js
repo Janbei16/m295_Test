@@ -64,9 +64,9 @@ exports.postTasks = (req, res) => {
 
 exports.getTask = (req, res) => {
   if (checkLogin(req, res)) {
-    const taskid = req.params.taskid;
+    const taskId = req.params.taskId
 
-    const task = tasks.find((task) => task.id == taskid);
+    const task = tasks.find((task) => task.id == taskId)
     if (task) {
       res.json(task);
     } else {
@@ -77,10 +77,10 @@ exports.getTask = (req, res) => {
 
 exports.updateTask = (req, res) => {
   if (checkLogin(req, res)) {
-    const taskid = req.params.taskid;
+    const taskId = req.params.taskId
     const task = req.body;
 
-    const taskUpdate = tasks.find((task) => task.id == taskid);
+    const taskUpdate = tasks.find((task) => task.id == taskId)
     if (taskUpdate) {
       taskUpdate.title = task.title;
       taskUpdate.description = task.description;
@@ -95,9 +95,9 @@ exports.updateTask = (req, res) => {
 
 exports.deleteTask = (req, res) => {
   if (checkLogin(req, res)) {
-    const taskid = req.params.taskid;
+    const taskId = req.params.taskId
 
-    const taskDelete = tasks.find((task) => task.id == taskid);
+    const taskDelete = tasks.find((task) => task.id == taskId)
 
     if (taskDelete) {
       const index = tasks.indexOf(taskDelete);

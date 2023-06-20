@@ -56,12 +56,12 @@
         }
       }
     },
-    "/tasks/{taskid}": {
+    "/tasks/{taskId}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "taskid",
+            "name": "taskId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -80,7 +80,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "taskid",
+            "name": "taskId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -123,7 +123,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "taskid",
+            "name": "taskId",
             "in": "path",
             "required": true,
             "type": "string"
